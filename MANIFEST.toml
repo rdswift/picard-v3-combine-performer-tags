@@ -1,15 +1,33 @@
 uuid = "4779bcaf-1bda-4580-8c55-1fbe28771ce8"
 name = "Combine Performer Tags"
 authors = ["Bob Swift"]
-version = "0.8"
-description = """
-This plugin combines all performer tags into a multi-value variable `%_performers%`.
-The format of the resulting variable items can be customized in the option settings page.
-"""
+description = "This plugin combines all performer tags into a multi-value variable `%_performers%`."
 api = ['3.0']
 license = "GPL-2.0-or-later"
 license_url = "https://www.gnu.org/licenses/gpl-2.0.html"
 long_description = """
 This plugin combines all performer tags into a multi-value variable `%_performers%`.
 The format of the resulting variable items can be customized in the option settings page.
+"""
+categories = ["metadata"]
+homepage = "https://picard-plugins-user-guides.readthedocs.io/en/latest/combine_performer_tags/user_guide.html"
+
+
+[name_i18n]
+de = "Performer-Tags kombinieren"
+fr = "Combiner les balises Performer"
+
+[description_i18n]
+de = "Dieses Plugin fasst alle Performer-Tags in einer Mehrwertvariablen `%_performers%` zusammen."
+fr = "Ce plugin combine toutes les balises performer dans une variable à valeurs multiples `%_performers%`."
+
+[long_description_i18n]
+de = """
+Dieses Plugin fasst alle Performer-Tags in einer Mehrwertvariablen `%_performers%` zusammen.
+Das Format der resultierenden variablen Elemente kann auf der Seite mit den Optionseinstellungen angepasst werden.
+"""
+
+fr = """
+Ce plugin combine toutes les balises performer dans une variable à valeurs multiples `%_performers%`.
+Le format des éléments variables résultants peut être personnalisé dans la page des paramètres des options.
 """
