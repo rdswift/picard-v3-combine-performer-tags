@@ -35,6 +35,9 @@ from .ui_options_combine_performer_tags import \
     Ui_CombinePerformerTagsOptionsPage
 
 
+USER_GUIDE_URL = 'https://picard-plugins-user-guides.readthedocs.io/en/latest/combine_performer_tags/user_guide.html'
+
+
 class PluginOptions():
     """Tag formatting options used by the plugin.  Initial attribute values
     are the key strings for the options settings in the Picard configuration.
@@ -326,42 +329,146 @@ class CombinePerformerTagsOptionsPage(OptionsPage):
 
     keys = PluginOptions()  # Get unintialized list to provide Picard option settings keys
 
-    # options = [
-    #     options.BoolOption('setting', keys.OPT_CREDITED_ARTIST, True),
-    #     options.BoolOption('setting', keys.OPT_CREDITED_INSTRUMENT, True),
-    #     options.BoolOption('setting', keys.OPT_CREDITED_VOCAL, True),
-    #     options.BoolOption('setting', keys.OPT_INSTRUMENT_ATTR_ADDITIONAL, True),
-    #     options.BoolOption('setting', keys.OPT_INSTRUMENT_ATTR_GUEST, True),
-    #     options.BoolOption('setting', keys.OPT_INSTRUMENT_ATTR_SOLO, True),
-    #     options.BoolOption('setting', keys.OPT_VOCAL_ATTR_ADDITIONAL, True),
-    #     options.BoolOption('setting', keys.OPT_VOCAL_ATTR_GUEST, True),
-    #     options.BoolOption('setting', keys.OPT_VOCAL_ATTR_SOLO, True),
-    #     options.BoolOption('setting', keys.OPT_VOCAL_ATTR_TYPES, True),
-
-    #     options.BoolOption('setting', keys.OPT_TAG_GROUP_BY_ARTIST, True),
-
-    #     options.IntOption('setting', keys.OPT_FORMAT_GROUP_ADDITIONAL, 3),
-    #     options.IntOption('setting', keys.OPT_FORMAT_GROUP_GUEST, 4),
-    #     options.IntOption('setting', keys.OPT_FORMAT_GROUP_SOLO, 3),
-    #     options.IntOption('setting', keys.OPT_FORMAT_GROUP_VOCALS, 2),
-    #     options.TextOption('setting', keys.OPT_FORMAT_GROUP_1_START, ''),
-    #     options.TextOption('setting', keys.OPT_FORMAT_GROUP_1_END, ' '),
-    #     options.TextOption('setting', keys.OPT_FORMAT_GROUP_1_SEP, ''),
-    #     options.TextOption('setting', keys.OPT_FORMAT_GROUP_2_START, ', '),
-    #     options.TextOption('setting', keys.OPT_FORMAT_GROUP_2_END, ''),
-    #     options.TextOption('setting', keys.OPT_FORMAT_GROUP_2_SEP, ''),
-    #     options.TextOption('setting', keys.OPT_FORMAT_GROUP_3_START, ' ('),
-    #     options.TextOption('setting', keys.OPT_FORMAT_GROUP_3_END, ')'),
-    #     options.TextOption('setting', keys.OPT_FORMAT_GROUP_3_SEP, ''),
-    #     options.TextOption('setting', keys.OPT_FORMAT_GROUP_4_START, ' ('),
-    #     options.TextOption('setting', keys.OPT_FORMAT_GROUP_4_END, ')'),
-    #     options.TextOption('setting', keys.OPT_FORMAT_GROUP_4_SEP, ''),
-    # ]
-
     def __init__(self, parent=None) -> None:
         super().__init__(parent)
         self.ui = Ui_CombinePerformerTagsOptionsPage()
         self.ui.setupUi(self)
+
+        # Add translations
+        self.ui.label_20.setText(self.api.tr('ui.page_title', "Combine Performer Tags"))
+        self.ui.format_description.setText(
+            self.api.tr(
+                "ui.format_description",
+                (
+                    "<html><head/><body><p>These settings will determine how the <span style=\"font-weight:600;\">"
+                    "Combine Performer Tags</span> plugin operates. Note that there is an example output displayed at "
+                    "the bottom of this settings window, and the example is updated whenever a setting is changed.</p><p>"
+                    "Please see the <a href=\"{url}\"><span style=\"text-decoration: underline; color:#0000ff;\">User "
+                    "Guide</span></a> for additional information.</p></body></html>"
+                )
+            ).format(url=USER_GUIDE_URL)
+        )
+        self.ui.label_21.setText(self.api.tr("ui.standard_or_credited", "Standard or Credited Information"))
+        self.ui.label.setText(
+            self.api.tr(
+                "ui.standard_or_credited_description",
+                (
+                    "<html><head/><body><p>These options determine whether the information is displayed as <span style=\""
+                    "font-weight:600;\">credited</span> or <span style=\"font-weight:600;\">standard</span>. If credited is "
+                    "selected for one of the information types and there is no credited value available, the standard "
+                    "information will be used.</p></body></html>"
+                )
+            )
+        )
+        self.ui.cb_credited_artists.setText(self.api.tr("ui.cb_credited_artists", "As credited artist names"))
+        self.ui.cb_credited_instruments.setText(self.api.tr("ui.cb_credited_instruments", "As credited instrument names"))
+        self.ui.cb_credited_vocals.setText(self.api.tr("cb_credited_vocals", "As credited vocal names"))
+        self.ui.label_22.setText(self.api.tr("ui.include_performer_attributes", "Include Performance Attributes"))
+        self.ui.label_2.setText(
+            self.api.tr(
+                "ui.include_performer_attributes_description",
+                (
+                    "<html><head/><body><p>This option determines whether or not performance attributes that have been "
+                    "specified in the performance relationship are included in the output. Note that the display of the "
+                    "attributes can be enabled or disabled separately for instruments and vocals.</p></body></html>"
+                )
+            )
+        )
+        self.ui.cb_guest_vocals.setText(self.api.tr("ui.cb_guest_vocals", "Vocals"))
+        self.ui.cb_solo_instruments.setText(self.api.tr("ui.cb_solo_instruments", "Instruments"))
+        self.ui.cb_guest_instruments.setText(self.api.tr("ui.cb_guest_instruments", "Instruments"))
+        self.ui.label_7.setText(self.api.tr("ui.guest", "Guest:"))
+        self.ui.cb_additional_instruments.setText(self.api.tr("ui.cb_additional_instruments", "Instruments"))
+        self.ui.cb_solo_vocals.setText(self.api.tr("ui.cb_solo_vocals", "Vocals"))
+        self.ui.cb_additional_vocals.setText(self.api.tr("ui.cb_additional_vocals", "Vocals"))
+        self.ui.label_8.setText(self.api.tr("ui.solo", "Solo:"))
+        self.ui.label_6.setText(self.api.tr("ui.additional", "Additional:"))
+        self.ui.cb_vocal_types.setText(self.api.tr("ui.cb_vocal_types", "Vocals"))
+        self.ui.label_13.setText(self.api.tr("ui.vocal_types", "Vocal Types:"))
+        self.ui.label_23.setText(self.api.tr("ui.grouping", "Grouping"))
+        self.ui.label_14.setText(
+            self.api.tr(
+                "ui.grouping_description",
+                "<html><head/><body><p>This determines how the items in the variable are grouped.</p></body></html>"
+            )
+        )
+        self.ui.label_15.setText(self.api.tr("ui.group_by", "Group by:"))
+        self.ui.rb_group_artist.setText(self.api.tr("ui.rb_group_artist", "Artist"))
+        self.ui.rb_group_instrument.setText(self.api.tr("ui.rb_group_instrument", "Instrument / Vocal"))
+        self.ui.label_24.setText(self.api.tr("ui.keyword_sections", "Keyword Sections Assignment"))
+        self.ui.format_description_2.setText(
+            self.api.tr(
+                "ui.keyword_sections_description",
+                (
+                    "<html><head/><body><p>These settings determine the format for the items in the variable. The format is "
+                    "divided into six parts: the artist; the instrument or vocal; and four user selectable sections for the "
+                    "extra information. This is set out as:</p><p>With Artist grouping:</p><p align=\"center\">Artist: <span "
+                    "style=\"font-weight:600;\">[Section 1]</span>Instrument/Vocal<span style=\"font-weight:600;\">[Section 2]"
+                    "[Section 3][Section 4]</span></p><p>With Instrument/Vocal grouping:</p><p align=\"center\"><span style=\""
+                    "font-weight:600;\">[Section 1]</span>Instrument/Vocal<span style=\"font-weight:600;\">[Section 2][Section "
+                    "3]</span>: Artist<span style=\" font-weight:600;\">[Section 4]</span></p><p>You can select the section in "
+                    "which each of the extra information words appear.</p></body></html>"
+                )
+            )
+        )
+        self.ui.additional_rb_1.setText(self.api.tr("ui.additional_rb_1", "1"))
+        self.ui.additional_rb_2.setText(self.api.tr("ui.additional_rb_2", "2"))
+        self.ui.additional_rb_3.setText(self.api.tr("ui.additional_rb_3", "3"))
+        self.ui.additional_rb_4.setText(self.api.tr("ui.additional_rb_4", "4"))
+        self.ui.guest_rb_1.setText(self.api.tr("ui.guest_rb_1", "1"))
+        self.ui.guest_rb_2.setText(self.api.tr("ui.guest_rb_2", "2"))
+        self.ui.guest_rb_3.setText(self.api.tr("ui.guest_rb_3", "3"))
+        self.ui.guest_rb_4.setText(self.api.tr("ui.guest_rb_4", "4"))
+        self.ui.solo_rb_1.setText(self.api.tr("ui.solo_rb_1", "1"))
+        self.ui.solo_rb_2.setText(self.api.tr("ui.solo_rb_2", "2"))
+        self.ui.solo_rb_3.setText(self.api.tr("ui.solo_rb_3", "3"))
+        self.ui.solo_rb_4.setText(self.api.tr("ui.solo_rb_4", "4"))
+        self.ui.label_16.setText(self.api.tr("ui.label_additional", "Additional:"))
+        self.ui.label_17.setText(self.api.tr("ui.label_guest", "Guest:"))
+        self.ui.label_18.setText(self.api.tr("ui.label_solo", "Solo:"))
+        self.ui.label_19.setText(self.api.tr("ui.label_vocal_types", "Vocal Types:"))
+        self.ui.vocals_rb_1.setText(self.api.tr("ui.vocals_rb_1", "1"))
+        self.ui.vocals_rb_2.setText(self.api.tr("ui.vocals_rb_2", "2"))
+        self.ui.vocals_rb_3.setText(self.api.tr("ui.vocals_rb_3", "3"))
+        self.ui.vocals_rb_4.setText(self.api.tr("ui.vocals_rb_4", "4"))
+        self.ui.label_25.setText(self.api.tr("ui.label_section_display_settings", "Section Display Settings"))
+        self.ui.label_27.setText(
+            self.api.tr(
+                "ui.label_section_display_settings_description",
+                (
+                    "<html><head/><body><p>For each of the sections you can select the starting characters, "
+                    "the characters separating entries, and the ending characters. Note that leading or trailing "
+                    "spaces must be included in the settings and will not be automatically added. If no separator "
+                    "characters are entered, the items within a section will be automatically separated by a single "
+                    "space.</p></body></html>"
+                )
+            )
+        )
+        self.ui.format_group_2_sep_char.setPlaceholderText(self.api.tr("ui.placeholder_blank", "(blank)"))
+        self.ui.format_group_2_start_char.setText(self.api.tr("ui.format_group_2_start_char", ", "))
+        self.ui.format_group_2_start_char.setPlaceholderText(self.api.tr("ui.placeholder_blank", "(blank)"))
+        self.ui.format_group_4_end_char.setText(self.api.tr("ui.format_group_4_end_char", ")"))
+        self.ui.format_group_4_end_char.setPlaceholderText(self.api.tr("ui.placeholder_blank", "(blank)"))
+        self.ui.format_group_4_start_char.setText(self.api.tr("ui.format_group_4_start_char", " ("))
+        self.ui.format_group_4_start_char.setPlaceholderText(self.api.tr("ui.placeholder_blank", "(blank)"))
+        self.ui.label_9.setText(self.api.tr("ui.label_section_4", "Section 4"))
+        self.ui.label_12.setText(self.api.tr("ui.label_end_chars", "End Chars"))
+        self.ui.label_5.setText(self.api.tr("ui.label_section_1", "Section 1"))
+        self.ui.label_3.setText(self.api.tr("ui.label_section_2", "Section 2"))
+        self.ui.format_group_3_sep_char.setPlaceholderText(self.api.tr("ui.placeholder_blank", "(blank)"))
+        self.ui.format_group_4_sep_char.setPlaceholderText(self.api.tr("ui.placeholder_blank", "(blank)"))
+        self.ui.format_group_1_start_char.setPlaceholderText(self.api.tr("ui.placeholder_blank", "(blank)"))
+        self.ui.label_4.setText(self.api.tr("ui.label_section_3", "Section 3"))
+        self.ui.label_11.setText(self.api.tr("ui.label_sep_chars", "Sep Chars"))
+        self.ui.format_group_3_start_char.setText(self.api.tr("ui.format_group_3_start_char", " ("))
+        self.ui.format_group_3_start_char.setPlaceholderText(self.api.tr("ui.placeholder_blank", "(blank)"))
+        self.ui.format_group_1_end_char.setPlaceholderText(self.api.tr("ui.placeholder_blank", "(blank)"))
+        self.ui.format_group_2_end_char.setPlaceholderText(self.api.tr("ui.placeholder_blank", "(blank)"))
+        self.ui.format_group_3_end_char.setText(self.api.tr("ui.format_group_3_end_char", ")"))
+        self.ui.format_group_3_end_char.setPlaceholderText(self.api.tr("ui.placeholder_blank", "(blank)"))
+        self.ui.format_group_1_sep_char.setPlaceholderText(self.api.tr("ui.placeholder_blank", "(blank)"))
+        self.ui.label_10.setText(self.api.tr("ui.label_start_chars", "Start Chars"))
+        self.ui.label_26.setText(self.api.tr("ui.label_example_output", "Example Output"))
 
         # Enable external link
         self.ui.format_description.setOpenExternalLinks(True)
