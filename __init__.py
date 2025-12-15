@@ -29,6 +29,7 @@ from PyQt6 import QtWidgets
 from picard.plugin3.api import (
     OptionsPage,
     PluginApi,
+    t_,
 )
 
 from .ui_options_combine_performer_tags import \
@@ -323,9 +324,7 @@ class CombinePerformerTagsOptionsPage(OptionsPage):
     """Options page for the Combine Performer Tags plugin.
     """
 
-    NAME = "combine_performer_tags"
-    TITLE = "Combine Performer Tags"
-    PARENT = "plugins"
+    TITLE = t_("ui.title", "Combine Performer Tags")
 
     keys = PluginOptions()  # Get unintialized list to provide Picard option settings keys
 

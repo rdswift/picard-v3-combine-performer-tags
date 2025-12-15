@@ -56,6 +56,7 @@
 "ui.solo_rb_4" = "4"
 "ui.standard_or_credited" = "Standard or Credited Information"
 "ui.standard_or_credited_description" = "<html><head/><body><p>These options determine whether the information is displayed as <span style=\"font-weight:600;\">credited</span> or <span style=\"font-weight:600;\">standard</span>. If credited is selected for one of the information types and there is no credited value available, the standard information will be used.</p></body></html>"
+"ui.title" = "Combine Performer Tags"
 "ui.vocal_types" = "Vocal Types:"
 "ui.vocals_rb_1" = "1"
 "ui.vocals_rb_2" = "2"
