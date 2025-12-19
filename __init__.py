@@ -26,6 +26,7 @@ from collections import namedtuple
 
 from PyQt6 import QtWidgets
 
+from picard.config import get_config
 from picard.plugin3.api import (
     OptionsPage,
     PluginApi,
@@ -1013,6 +1014,9 @@ def enable(api: PluginApi) -> None:
     api.plugin_config.register_option(keys.OPT_FORMAT_GROUP_4_END, ')')
     api.plugin_config.register_option(keys.OPT_FORMAT_GROUP_4_SEP, '')
 
+    # Migrate settings from 2.x version if available
+    migrate_settings(api)
+
     # Register script variable
     api.register_script_variable(
         name="_performers",
@@ -1030,3 +1034,49 @@ def enable(api: PluginApi) -> None:
 
     # Register options page
     api.register_options_page(CombinePerformerTagsOptionsPage)
+
+
+def migrate_settings(api: PluginApi):
+    cfg = get_config()
+    if cfg.setting.raw_value("cpt_cred_artist") is None:
+        return
+
+    api.logger.info("Migrating settings from 2.x version.")
+
+    keys = PluginOptions()  # Get unintialized list to provide Picard option settings keys
+    mapping = [
+        ('cpt_cred_artist', keys.OPT_CREDITED_ARTIST, bool),
+        ('cpt_cred_instrument', keys.OPT_CREDITED_INSTRUMENT, bool),
+        ('cpt_cred_vocal', keys.OPT_CREDITED_VOCAL, bool),
+        ('cpt_inst_attr_additional', keys.OPT_INSTRUMENT_ATTR_ADDITIONAL, bool),
+        ('cpt_inst_attr_guest', keys.OPT_INSTRUMENT_ATTR_GUEST, bool),
+        ('cpt_inst_attr_solo', keys.OPT_INSTRUMENT_ATTR_SOLO, bool),
+        ('cpt_vocal_attr_additional', keys.OPT_VOCAL_ATTR_ADDITIONAL, bool),
+        ('cpt_vocal_attr_guest', keys.OPT_VOCAL_ATTR_GUEST, bool),
+        ('cpt_vocal_attr_solo', keys.OPT_VOCAL_ATTR_SOLO, bool),
+        ('cpt_vocal_attr_types', keys.OPT_VOCAL_ATTR_TYPES, bool),
+        ('cpt_group_by_artist', keys.OPT_TAG_GROUP_BY_ARTIST, bool),
+        ('cpt_format_group_additional', keys.OPT_FORMAT_GROUP_ADDITIONAL, int),
+        ('cpt_format_group_guest', keys.OPT_FORMAT_GROUP_GUEST, int),
+        ('cpt_format_group_solo', keys.OPT_FORMAT_GROUP_SOLO, int),
+        ('cpt_format_group_vocals', keys.OPT_FORMAT_GROUP_VOCALS, int),
+        ('cpt_format_group_1_start_char', keys.OPT_FORMAT_GROUP_1_START, str),
+        ('cpt_format_group_1_end_char', keys.OPT_FORMAT_GROUP_1_END, str),
+        ('cpt_format_group_1_sep_char', keys.OPT_FORMAT_GROUP_1_SEP, str),
+        ('cpt_format_group_2_start_char', keys.OPT_FORMAT_GROUP_2_START, str),
+        ('cpt_format_group_2_end_char', keys.OPT_FORMAT_GROUP_2_END, str),
+        ('cpt_format_group_2_sep_char', keys.OPT_FORMAT_GROUP_2_SEP, str),
+        ('cpt_format_group_3_start_char', keys.OPT_FORMAT_GROUP_3_START, str),
+        ('cpt_format_group_3_end_char', keys.OPT_FORMAT_GROUP_3_END, str),
+        ('cpt_format_group_3_sep_char', keys.OPT_FORMAT_GROUP_3_SEP, str),
+        ('cpt_format_group_4_start_char', keys.OPT_FORMAT_GROUP_4_START, str),
+        ('cpt_format_group_4_end_char', keys.OPT_FORMAT_GROUP_4_END, str),
+        ('cpt_format_group_4_sep_char', keys.OPT_FORMAT_GROUP_4_SEP, str),
+    ]
+
+    for old_key, new_key, qtype in mapping:
+        if cfg.setting.raw_value(old_key) is None:
+            api.logger.debug("No old setting for key: '%s'", old_key,)
+            continue
+        api.plugin_config[new_key] = cfg.setting.raw_value(old_key, qtype=qtype)
+        cfg.setting.remove(old_key)
