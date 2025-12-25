@@ -17,7 +17,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>form.title</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -32,14 +32,14 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-415</y>
-        <width>530</width>
-        <height>1199</height>
+        <y>-65</y>
+        <width>663</width>
+        <height>836</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QLabel" name="label_20">
+        <widget class="QLabel" name="page_title">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
@@ -48,18 +48,18 @@
           </font>
          </property>
          <property name="text">
-          <string>Combine Performer Tags</string>
+          <string>page.title</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QFrame" name="gb_description">
+        <widget class="QFrame" name="page_description_frame">
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <property name="topMargin">
            <number>0</number>
           </property>
           <item>
-           <widget class="QLabel" name="format_description">
+           <widget class="QLabel" name="page_description">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
               <horstretch>0</horstretch>
@@ -67,7 +67,10 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;These settings will determine how the &lt;span style=&quot; font-weight:600;&quot;&gt;Combine Performer Tags&lt;/span&gt; plugin operates.  Note that there is an example output displayed at the bottom of this settings window, and the example is updated whenever a setting is changed.&lt;/p&gt;&lt;p&gt;Please visit the repository on GitHub for &lt;a href=&quot;https://github.com/rdswift/picard-plugins/blob/2.0_RDS_Plugins/plugins/combine_performer_tags/docs/README.md&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;additional information&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>page.description</string>
+            </property>
+            <property name="textFormat">
+             <enum>Qt::MarkdownText</enum>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
@@ -78,7 +81,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_21">
+        <widget class="QLabel" name="section_standard_or_credited_title">
          <property name="font">
           <font>
            <weight>75</weight>
@@ -86,20 +89,23 @@
           </font>
          </property>
          <property name="text">
-          <string>Standard or Credited Information</string>
+          <string>section.standard_or_credited.title</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QFrame" name="gb_standard_or_credited">
+        <widget class="QFrame" name="section_standard_or_credited_frame">
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <property name="topMargin">
            <number>0</number>
           </property>
           <item>
-           <widget class="QLabel" name="label">
+           <widget class="QLabel" name="section_standard_or_credited_description">
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;These options determine whether the information is displayed as &lt;span style=&quot; font-weight:600;&quot;&gt;credited&lt;/span&gt; or &lt;span style=&quot; font-weight:600;&quot;&gt;standard&lt;/span&gt;. If credited is selected for one of the information types and there is no credited value available, the standard information will be used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>section.standard_or_credited.text</string>
+            </property>
+            <property name="textFormat">
+             <enum>Qt::MarkdownText</enum>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
@@ -117,21 +123,21 @@
             <item>
              <widget class="QCheckBox" name="cb_credited_artists">
               <property name="text">
-               <string>As credited artist names</string>
+               <string>option.credited_artists</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QCheckBox" name="cb_credited_instruments">
               <property name="text">
-               <string>As credited instrument names</string>
+               <string>option.credited_instruments</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QCheckBox" name="cb_credited_vocals">
               <property name="text">
-               <string>As credited vocal names</string>
+               <string>option.credited_vocals</string>
               </property>
              </widget>
             </item>
@@ -141,7 +147,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_22">
+        <widget class="QLabel" name="includes_section_title">
          <property name="font">
           <font>
            <weight>75</weight>
@@ -149,20 +155,23 @@
           </font>
          </property>
          <property name="text">
-          <string>Include Performance Attributes</string>
+          <string>section.includes.title</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QFrame" name="gb_performance_attributes">
+        <widget class="QFrame" name="section_includes_frame">
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <property name="topMargin">
            <number>0</number>
           </property>
           <item>
-           <widget class="QLabel" name="label_2">
+           <widget class="QLabel" name="section_includes_text">
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This option determines whether or not performance attributes are included in the output (if they have been specified in the performance relationship). Note that the display of the attributes can be enabled or disabled separately for instruments and vocals.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>section.includes.text</string>
+            </property>
+            <property name="textFormat">
+             <enum>Qt::MarkdownText</enum>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
@@ -185,26 +194,26 @@
               <item row="1" column="2">
                <widget class="QCheckBox" name="cb_guest_vocals">
                 <property name="text">
-                 <string>Vocals</string>
+                 <string>section.includes.cb.vocals</string>
                 </property>
                </widget>
               </item>
               <item row="2" column="1">
                <widget class="QCheckBox" name="cb_solo_instruments">
                 <property name="text">
-                 <string>Instruments</string>
+                 <string>section.includes.cb.instruments</string>
                 </property>
                </widget>
               </item>
               <item row="1" column="1">
                <widget class="QCheckBox" name="cb_guest_instruments">
                 <property name="text">
-                 <string>Instruments</string>
+                 <string>section.includes.cb.instruments</string>
                 </property>
                </widget>
               </item>
               <item row="1" column="0">
-               <widget class="QLabel" name="label_7">
+               <widget class="QLabel" name="section_includes_label_guest">
                 <property name="font">
                  <font>
                   <weight>75</weight>
@@ -212,33 +221,33 @@
                  </font>
                 </property>
                 <property name="text">
-                 <string>Guest:</string>
+                 <string>section.label.guest</string>
                 </property>
                </widget>
               </item>
               <item row="0" column="1">
                <widget class="QCheckBox" name="cb_additional_instruments">
                 <property name="text">
-                 <string>Instruments</string>
+                 <string>section.includes.cb.instruments</string>
                 </property>
                </widget>
               </item>
               <item row="2" column="2">
                <widget class="QCheckBox" name="cb_solo_vocals">
                 <property name="text">
-                 <string>Vocals</string>
+                 <string>section.includes.cb.vocals</string>
                 </property>
                </widget>
               </item>
               <item row="0" column="2">
                <widget class="QCheckBox" name="cb_additional_vocals">
                 <property name="text">
-                 <string>Vocals</string>
+                 <string>section.includes.cb.vocals</string>
                 </property>
                </widget>
               </item>
               <item row="2" column="0">
-               <widget class="QLabel" name="label_8">
+               <widget class="QLabel" name="section_includes_label_solo">
                 <property name="font">
                  <font>
                   <weight>75</weight>
@@ -246,12 +255,12 @@
                  </font>
                 </property>
                 <property name="text">
-                 <string>Solo:</string>
+                 <string>section.label.solo</string>
                 </property>
                </widget>
               </item>
               <item row="0" column="0">
-               <widget class="QLabel" name="label_6">
+               <widget class="QLabel" name="section_includes_label_additional">
                 <property name="font">
                  <font>
                   <weight>75</weight>
@@ -259,19 +268,19 @@
                  </font>
                 </property>
                 <property name="text">
-                 <string>Additional:</string>
+                 <string>section.label.additional</string>
                 </property>
                </widget>
               </item>
               <item row="3" column="2">
                <widget class="QCheckBox" name="cb_vocal_types">
                 <property name="text">
-                 <string>Vocals</string>
+                 <string>section.includes.cb.vocals</string>
                 </property>
                </widget>
               </item>
               <item row="3" column="0">
-               <widget class="QLabel" name="label_13">
+               <widget class="QLabel" name="section_includes_label_vocal_types">
                 <property name="font">
                  <font>
                   <weight>75</weight>
@@ -279,7 +288,7 @@
                  </font>
                 </property>
                 <property name="text">
-                 <string>Vocal Types:</string>
+                 <string>section.label.vocal_types</string>
                 </property>
                </widget>
               </item>
@@ -304,7 +313,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_23">
+        <widget class="QLabel" name="section_grouping_title">
          <property name="font">
           <font>
            <weight>75</weight>
@@ -312,12 +321,12 @@
           </font>
          </property>
          <property name="text">
-          <string>Grouping</string>
+          <string>section.grouping.title</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QFrame" name="frame">
+        <widget class="QFrame" name="section_grouping_frame">
          <property name="font">
           <font>
            <weight>50</weight>
@@ -329,9 +338,12 @@
            <number>0</number>
           </property>
           <item>
-           <widget class="QLabel" name="label_14">
+           <widget class="QLabel" name="section_grouping_description">
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This determines how the items in the variable are grouped.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>section.grouping.text</string>
+            </property>
+            <property name="textFormat">
+             <enum>Qt::MarkdownText</enum>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
@@ -344,7 +356,7 @@
              <number>0</number>
             </property>
             <item>
-             <widget class="QLabel" name="label_15">
+             <widget class="QLabel" name="section_grouping_label_group_by">
               <property name="font">
                <font>
                 <weight>75</weight>
@@ -352,21 +364,21 @@
                </font>
               </property>
               <property name="text">
-               <string>Group by:</string>
+               <string>section.grouping.label.group_by</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QRadioButton" name="rb_group_artist">
               <property name="text">
-               <string>Artist</string>
+               <string>section.group.rb.artist</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QRadioButton" name="rb_group_instrument">
               <property name="text">
-               <string>Instrument / Vocal</string>
+               <string>section.group.rb.instrument_vocal</string>
               </property>
              </widget>
             </item>
@@ -389,7 +401,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_24">
+        <widget class="QLabel" name="keywords_section_title">
          <property name="font">
           <font>
            <weight>75</weight>
@@ -397,18 +409,18 @@
           </font>
          </property>
          <property name="text">
-          <string>Keyword Sections Assignment</string>
+          <string>section.keywords.title</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QFrame" name="gb_word_groups">
+        <widget class="QFrame" name="section_keywords_frame">
          <layout class="QVBoxLayout" name="verticalLayout_7">
           <property name="topMargin">
            <number>0</number>
           </property>
           <item>
-           <widget class="QLabel" name="format_description_2">
+           <widget class="QLabel" name="section_keywords_description">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
               <horstretch>0</horstretch>
@@ -416,7 +428,10 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;These settings determine the format for the items in the variable. The format is divided into six parts: the artist; the instrument or vocal; and four user selectable sections for the extra information. This is set out as:&lt;/p&gt;&lt;p&gt;With Artist grouping:&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;Artist: &lt;span style=&quot; font-weight:600;&quot;&gt;[Section 1]&lt;/span&gt;Instrument/Vocal&lt;span style=&quot; font-weight:600;&quot;&gt;[Section 2][Section 3][Section 4]&lt;/span&gt;&lt;/p&gt;&lt;p&gt;With Instrument/Vocal grouping:&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;[Section 1]&lt;/span&gt;Instrument/Vocal&lt;span style=&quot; font-weight:600;&quot;&gt;[Section 2][Section 3]&lt;/span&gt;: Artist&lt;span style=&quot; font-weight:600;&quot;&gt;[Section 4]&lt;/span&gt;&lt;/p&gt;&lt;p&gt;You can select the section in which each of the extra information words appear.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>section.keywords.text</string>
+            </property>
+            <property name="textFormat">
+             <enum>Qt::MarkdownText</enum>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
@@ -455,7 +470,7 @@
                   </size>
                  </property>
                  <property name="text">
-                  <string>1</string>
+                  <string notr="true">1</string>
                  </property>
                 </widget>
                </item>
@@ -468,7 +483,7 @@
                   </size>
                  </property>
                  <property name="text">
-                  <string>2</string>
+                  <string notr="true">2</string>
                  </property>
                 </widget>
                </item>
@@ -481,7 +496,7 @@
                   </size>
                  </property>
                  <property name="text">
-                  <string>3</string>
+                  <string notr="true">3</string>
                  </property>
                 </widget>
                </item>
@@ -494,7 +509,7 @@
                   </size>
                  </property>
                  <property name="text">
-                  <string>4</string>
+                  <string notr="true">4</string>
                  </property>
                 </widget>
                </item>
@@ -525,7 +540,7 @@
                   </size>
                  </property>
                  <property name="text">
-                  <string>1</string>
+                  <string notr="true">1</string>
                  </property>
                 </widget>
                </item>
@@ -538,7 +553,7 @@
                   </size>
                  </property>
                  <property name="text">
-                  <string>2</string>
+                  <string notr="true">2</string>
                  </property>
                 </widget>
                </item>
@@ -551,7 +566,7 @@
                   </size>
                  </property>
                  <property name="text">
-                  <string>3</string>
+                  <string notr="true">3</string>
                  </property>
                 </widget>
                </item>
@@ -564,7 +579,7 @@
                   </size>
                  </property>
                  <property name="text">
-                  <string>4</string>
+                  <string notr="true">4</string>
                  </property>
                 </widget>
                </item>
@@ -595,7 +610,7 @@
                   </size>
                  </property>
                  <property name="text">
-                  <string>1</string>
+                  <string notr="true">1</string>
                  </property>
                 </widget>
                </item>
@@ -608,7 +623,7 @@
                   </size>
                  </property>
                  <property name="text">
-                  <string>2</string>
+                  <string notr="true">2</string>
                  </property>
                 </widget>
                </item>
@@ -621,7 +636,7 @@
                   </size>
                  </property>
                  <property name="text">
-                  <string>3</string>
+                  <string notr="true">3</string>
                  </property>
                 </widget>
                </item>
@@ -634,7 +649,7 @@
                   </size>
                  </property>
                  <property name="text">
-                  <string>4</string>
+                  <string notr="true">4</string>
                  </property>
                 </widget>
                </item>
@@ -655,7 +670,7 @@
              </spacer>
             </item>
             <item row="0" column="0">
-             <widget class="QLabel" name="label_16">
+             <widget class="QLabel" name="section_keywords_label_additional">
               <property name="font">
                <font>
                 <weight>75</weight>
@@ -663,12 +678,12 @@
                </font>
               </property>
               <property name="text">
-               <string>Additional:</string>
+               <string>section.label.additional</string>
               </property>
              </widget>
             </item>
             <item row="1" column="0">
-             <widget class="QLabel" name="label_17">
+             <widget class="QLabel" name="section_keywords_label_guest">
               <property name="font">
                <font>
                 <weight>75</weight>
@@ -676,12 +691,12 @@
                </font>
               </property>
               <property name="text">
-               <string>Guest:</string>
+               <string>section.label.guest</string>
               </property>
              </widget>
             </item>
             <item row="2" column="0">
-             <widget class="QLabel" name="label_18">
+             <widget class="QLabel" name="section_keywords_label_solo">
               <property name="font">
                <font>
                 <weight>75</weight>
@@ -689,12 +704,12 @@
                </font>
               </property>
               <property name="text">
-               <string>Solo:</string>
+               <string>section.label.solo</string>
               </property>
              </widget>
             </item>
             <item row="3" column="0">
-             <widget class="QLabel" name="label_19">
+             <widget class="QLabel" name="section_keywords_label_vocal_types">
               <property name="font">
                <font>
                 <weight>75</weight>
@@ -702,7 +717,7 @@
                </font>
               </property>
               <property name="text">
-               <string>Vocal Types:</string>
+               <string>section.label.vocal_types</string>
               </property>
              </widget>
             </item>
@@ -730,7 +745,7 @@
                   </size>
                  </property>
                  <property name="text">
-                  <string>1</string>
+                  <string notr="true">1</string>
                  </property>
                 </widget>
                </item>
@@ -743,7 +758,7 @@
                   </size>
                  </property>
                  <property name="text">
-                  <string>2</string>
+                  <string notr="true">2</string>
                  </property>
                 </widget>
                </item>
@@ -756,7 +771,7 @@
                   </size>
                  </property>
                  <property name="text">
-                  <string>3</string>
+                  <string notr="true">3</string>
                  </property>
                 </widget>
                </item>
@@ -769,7 +784,7 @@
                   </size>
                  </property>
                  <property name="text">
-                  <string>4</string>
+                  <string notr="true">4</string>
                  </property>
                 </widget>
                </item>
@@ -782,7 +797,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_25">
+        <widget class="QLabel" name="section_display_title">
          <property name="font">
           <font>
            <weight>75</weight>
@@ -790,20 +805,23 @@
           </font>
          </property>
          <property name="text">
-          <string>Section Display Settings</string>
+          <string>section.display.title</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QFrame" name="gb_group_settings">
+        <widget class="QFrame" name="section_dosplay_frame">
          <layout class="QVBoxLayout" name="verticalLayout_8">
           <property name="topMargin">
            <number>0</number>
           </property>
           <item>
-           <widget class="QLabel" name="label_27">
+           <widget class="QLabel" name="section_display_description">
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;For each of the sections you can select the starting character(s), the character(s) separating entries, and the ending character(s). Note that leading or trailing spaces must be included in the settings and will not be automatically added. If no separator characters are entered, the items within a section will be automatically separated by a single space.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>section.display.text</string>
+            </property>
+            <property name="textFormat">
+             <enum>Qt::MarkdownText</enum>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
@@ -823,8 +841,11 @@
                 <height>16777215</height>
                </size>
               </property>
+              <property name="text">
+               <string notr="true"/>
+              </property>
               <property name="placeholderText">
-               <string>(blank)</string>
+               <string>section.display.default.blank</string>
               </property>
              </widget>
             </item>
@@ -837,10 +858,10 @@
                </size>
               </property>
               <property name="text">
-               <string>, </string>
+               <string notr="true">, </string>
               </property>
               <property name="placeholderText">
-               <string>(blank)</string>
+               <string>section.display.default.blank</string>
               </property>
              </widget>
             </item>
@@ -853,10 +874,10 @@
                </size>
               </property>
               <property name="text">
-               <string>)</string>
+               <string notr="true">)</string>
               </property>
               <property name="placeholderText">
-               <string>(blank)</string>
+               <string>section.display.default.blank</string>
               </property>
              </widget>
             </item>
@@ -869,10 +890,10 @@
                </size>
               </property>
               <property name="text">
-               <string> (</string>
+               <string notr="true"> (</string>
               </property>
               <property name="placeholderText">
-               <string>(blank)</string>
+               <string>section.display.default.blank</string>
               </property>
              </widget>
             </item>
@@ -890,7 +911,7 @@
              </spacer>
             </item>
             <item row="6" column="0" alignment="Qt::AlignLeft">
-             <widget class="QLabel" name="label_9">
+             <widget class="QLabel" name="section_display_label_4">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -904,12 +925,12 @@
                </font>
               </property>
               <property name="text">
-               <string>Section 4</string>
+               <string>section.display.label.4</string>
               </property>
              </widget>
             </item>
             <item row="2" column="3" alignment="Qt::AlignHCenter">
-             <widget class="QLabel" name="label_12">
+             <widget class="QLabel" name="section_display_label_end">
               <property name="font">
                <font>
                 <weight>75</weight>
@@ -917,12 +938,12 @@
                </font>
               </property>
               <property name="text">
-               <string>End Char(s)</string>
+               <string>section.display.label.end</string>
               </property>
              </widget>
             </item>
             <item row="3" column="0" alignment="Qt::AlignLeft">
-             <widget class="QLabel" name="label_5">
+             <widget class="QLabel" name="section_display_label_1">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -936,12 +957,12 @@
                </font>
               </property>
               <property name="text">
-               <string>Section 1</string>
+               <string>section.display.label.1</string>
               </property>
              </widget>
             </item>
             <item row="4" column="0" alignment="Qt::AlignLeft">
-             <widget class="QLabel" name="label_3">
+             <widget class="QLabel" name="section_display_label_2">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -955,7 +976,7 @@
                </font>
               </property>
               <property name="text">
-               <string>Section 2</string>
+               <string>section.display.label.2</string>
               </property>
              </widget>
             </item>
@@ -967,8 +988,11 @@
                 <height>16777215</height>
                </size>
               </property>
+              <property name="text">
+               <string notr="true"/>
+              </property>
               <property name="placeholderText">
-               <string>(blank)</string>
+               <string>section.display.default.blank</string>
               </property>
              </widget>
             </item>
@@ -980,8 +1004,11 @@
                 <height>16777215</height>
                </size>
               </property>
+              <property name="text">
+               <string notr="true"/>
+              </property>
               <property name="placeholderText">
-               <string>(blank)</string>
+               <string>section.display.default.blank</string>
               </property>
              </widget>
             </item>
@@ -993,13 +1020,16 @@
                 <height>16777215</height>
                </size>
               </property>
+              <property name="text">
+               <string notr="true"/>
+              </property>
               <property name="placeholderText">
-               <string>(blank)</string>
+               <string>section.display.default.blank</string>
               </property>
              </widget>
             </item>
             <item row="5" column="0" alignment="Qt::AlignLeft">
-             <widget class="QLabel" name="label_4">
+             <widget class="QLabel" name="section_display_label_3">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -1013,12 +1043,12 @@
                </font>
               </property>
               <property name="text">
-               <string>Section 3</string>
+               <string>section.display.label.3</string>
               </property>
              </widget>
             </item>
             <item row="2" column="2" alignment="Qt::AlignHCenter">
-             <widget class="QLabel" name="label_11">
+             <widget class="QLabel" name="section_display_label_sep">
               <property name="font">
                <font>
                 <weight>75</weight>
@@ -1026,7 +1056,7 @@
                </font>
               </property>
               <property name="text">
-               <string>Sep Char(s)</string>
+               <string>section.display.label.sep</string>
               </property>
              </widget>
             </item>
@@ -1039,10 +1069,10 @@
                </size>
               </property>
               <property name="text">
-               <string> (</string>
+               <string notr="true"> (</string>
               </property>
               <property name="placeholderText">
-               <string>(blank)</string>
+               <string>section.display.default.blank</string>
               </property>
              </widget>
             </item>
@@ -1055,10 +1085,10 @@
                </size>
               </property>
               <property name="text">
-               <string/>
+               <string notr="true"/>
               </property>
               <property name="placeholderText">
-               <string>(blank)</string>
+               <string>section.display.default.blank</string>
               </property>
              </widget>
             </item>
@@ -1070,8 +1100,11 @@
                 <height>16777215</height>
                </size>
               </property>
+              <property name="text">
+               <string notr="true"/>
+              </property>
               <property name="placeholderText">
-               <string>(blank)</string>
+               <string>section.display.default.blank</string>
               </property>
              </widget>
             </item>
@@ -1084,10 +1117,10 @@
                </size>
               </property>
               <property name="text">
-               <string>)</string>
+               <string notr="true">)</string>
               </property>
               <property name="placeholderText">
-               <string>(blank)</string>
+               <string>section.display.default.blank</string>
               </property>
              </widget>
             </item>
@@ -1099,13 +1132,16 @@
                 <height>16777215</height>
                </size>
               </property>
+              <property name="text">
+               <string notr="true"/>
+              </property>
               <property name="placeholderText">
-               <string>(blank)</string>
+               <string>section.display.default.blank</string>
               </property>
              </widget>
             </item>
             <item row="2" column="1" alignment="Qt::AlignHCenter">
-             <widget class="QLabel" name="label_10">
+             <widget class="QLabel" name="section_display_label_start">
               <property name="font">
                <font>
                 <weight>75</weight>
@@ -1113,7 +1149,7 @@
                </font>
               </property>
               <property name="text">
-               <string>Start Char(s)</string>
+               <string>section.display.label.start</string>
               </property>
              </widget>
             </item>
@@ -1123,7 +1159,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_26">
+        <widget class="QLabel" name="section_example_title">
          <property name="font">
           <font>
            <weight>75</weight>
@@ -1131,12 +1167,12 @@
           </font>
          </property>
          <property name="text">
-          <string>Example Output</string>
+          <string>section.example.title</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QFrame" name="gb_examples">
+        <widget class="QFrame" name="section_example_frame">
          <layout class="QVBoxLayout" name="verticalLayout_9">
           <property name="topMargin">
            <number>0</number>
