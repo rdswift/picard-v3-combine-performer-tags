@@ -36,5 +36,5 @@
 "qt.CombinePerformerTagsOptionsPage.section.standard_or_credited.text" = "Ces options déterminent si les informations s'affichent en mode **crédité** ou **standard**. Si le mode « crédité » est sélectionné pour l'un des types d'informations et qu'aucune valeur créditée n'est disponible, ce sont les informations standard qui seront utilisées."
 "qt.CombinePerformerTagsOptionsPage.section.standard_or_credited.title" = "Informations standard ou certifiées"
 "ui.title" = "Combiner les balises d'artiste"
-"variable.performers" = "Toutes les balises relatives aux interprètes instrumentaux et vocaux sont regroupées dans une variable à valeurs multiples, dont le format est défini dans la page des paramètres sous « Options... » > « Plugins »."
+"variable.performers" = "Toutes les balises relatives aux interprètes instrumentaux et vocaux sont regroupées dans une variable à valeurs multiples, dont le format est défini dans la page des paramètres sous « Options… » > « Plugins »."
 

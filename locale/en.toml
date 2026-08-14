@@ -36,4 +36,4 @@
 "qt.CombinePerformerTagsOptionsPage.section.standard_or_credited.text" = "These options determine whether the information is displayed as **credited** or **standard**. If credited is selected for one of the information types and there is no credited value available, the standard information will be used."
 "qt.CombinePerformerTagsOptionsPage.section.standard_or_credited.title" = "Standard or Credited Information"
 "ui.title" = "Combine Performer Tags"
-"variable.performers" = "All instrument and vocal performer tags combined into a multi-value variable, with the format based on the settings page under \"Options...\" > \"Plugins\"."
+"variable.performers" = "All instrument and vocal performer tags combined into a multi-value variable, with the format based on the settings page under \"Options…\" > \"Plugins\"."
