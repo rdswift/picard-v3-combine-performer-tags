@@ -5,3 +5,7 @@ This plugin combines all instrument and vocal performer tags into a new multi-va
 The plugin makes no additional calls to the MusicBrainz database, and it does not remove any of the `%performer:*%` tags.
 
 Please see the [User Guide](https://picard-plugins-user-guides.readthedocs.io/en/latest/combine_performer_tags/user_guide.html) for more information, including usage examples.
+
+## Contributing
+
+Please see the [Contribution Guidelines for MusicBrainz Picard Plugins](https://github.com/metabrainz/picard-plugins-registry/blob/main/PLUGIN_CONTRIBUTING.md) on how to help with development of this plugin.
